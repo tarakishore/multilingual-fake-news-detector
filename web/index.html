@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthLens | AI Fake News Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="glass-background"></div>
+    
+    <nav>
+        <div class="logo">
+            <span class="icon">🛡️</span> TruthLens <span class="badge">BETA</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">Analyze</a>
+            <a href="#">Datasets</a>
+            <a href="#">About XAI</a>
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <section class="hero-section">
+            <h1>Verify the truth.<br><span class="gradient-text">Understand the why.</span></h1>
+            <p class="subtitle">Multilingual Fake News Detection powered by XLM-RoBERTa & Explainable AI</p>
+        </section>
+
+        <section class="analysis-panel">
+            <div class="input-card">
+                <div class="card-header">
+                    <h3>Input News Content</h3>
+                    <div class="lang-badge">Detected: <span id="lang-detected">En</span></div>
+                </div>
+                <textarea id="news-input" placeholder="Paste news article, headline, or tweet here... (Supports 100+ languages)"></textarea>
+                <div class="action-bar">
+                    <button class="btn-clear" onclick="clearInput()">Clear</button>
+                    <button class="btn-analyze" onclick="analyzeNews()">
+                        <span class="btn-text">Analyze Content</span>
+                        <div class="loader" id="btn-loader"></div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="result-card" id="result-card">
+                <div class="empty-state">
+                    <div class="pulse-circle"></div>
+                    <p>Ready to analyze</p>
+                </div>
+                
+                <div class="results-content hidden" id="results-content">
+                    <div class="verdict-section">
+                        <div class="verdict-label">Verdict</div>
+                        <h2 id="verdict-text" class="verdict-fake">LIKELY FAKE</h2>
+                        <div class="confidence-meter">
+                            <div class="meter-bar">
+                                <div class="meter-fill" id="confidence-fill"></div>
+                            </div>
+                            <div class="confidence-value"><span id="confidence-score">0</span>% Confidence</div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="explainability-section">
+                        <div class="section-header">
+                            <h4><i class="fas fa-magic"></i> AI Explanation (Integrated Gradients)</h4>
+                            <span class="info-tooltip">?</span>
+                        </div>
+                        <p class="explainer-text">The AI found these words most suspicious:</p>
+                        
+                        <div class="heatmap-container" id="heatmap-container">
+                            <!-- Tokens injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
