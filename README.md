@@ -2,6 +2,8 @@
 
 A comprehensive AI-powered system for detecting fake news across multiple languages with transparent, explainable predictions using state-of-the-art multilingual transformers.
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 ## Features
 
 - **Multilingual Support**: Powered by XLM-RoBERTa and MuRIL for 100+ languages
